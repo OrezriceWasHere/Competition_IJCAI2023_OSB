@@ -28,7 +28,7 @@ from rl_trainer.algo.random import random_agent
 parser = argparse.ArgumentParser()
 parser.add_argument('--game_name', default="olympics-integrated", type=str)
 parser.add_argument('--algo', default="ppo", type=str, help="ppo/sac")
-parser.add_argument('--max_episodes', default=1500, type=int)
+parser.add_argument('--max_episodes', default=150000, type=int)
 parser.add_argument('--episode_length', default=500, type=int)
 parser.add_argument('--map', default=1, type = int)
 
@@ -118,7 +118,7 @@ def main(args):
 
         while True:
             action_opponent = opponent_agent.act(obs_oppo_agent)        #opponent action
-            action_opponent = [[0],[0]]  #here we assume the opponent is not moving in the demo
+            #action_opponent = [[0],[0]]  #here we assume the opponent is not moving in the demo
 
             action_ctrl_raw, action_prob= model.select_action(obs_ctrl_agent, False if args.load_model else True)
                             #inference
